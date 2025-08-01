@@ -10,21 +10,28 @@ class AutoClickerApp:
         self.root = root
         self.root.title("Auto Clicker")
 
+        # Set pink background for the main window
+        self.root.configure(bg="#ffc0cb")  # light pink
+
         self.clicking = False
         self.thread = None
 
-        tk.Label(root, text="Click Interval (seconds):").pack(pady=5)
-        self.interval_entry = tk.Entry(root)
+        # Label with pink background and custom font color
+        tk.Label(root, text="Click Interval (seconds):", bg="#ffc0cb", fg="#800080", font=("Arial", 12, "bold")).pack(pady=5)
+
+        self.interval_entry = tk.Entry(root, bg="#ffe4e1", fg="#800080", font=("Arial", 12))
         self.interval_entry.insert(0, "1.0")
         self.interval_entry.pack()
 
-        self.status_label = tk.Label(root, text="Status: Stopped", fg="red")
+        self.status_label = tk.Label(root, text="Status: Stopped", fg="red", bg="#ffc0cb", font=("Arial", 12, "bold"))
         self.status_label.pack(pady=5)
 
-        self.start_button = tk.Button(root, text="Start Clicking", command=self.start_clicking)
+        self.start_button = tk.Button(root, text="Start Clicking", command=self.start_clicking,
+                                      bg="#ff69b4", fg="white", font=("Arial", 12, "bold"))
         self.start_button.pack(pady=5)
 
-        self.stop_button = tk.Button(root, text="Stop Clicking", command=self.stop_clicking, state=tk.DISABLED)
+        self.stop_button = tk.Button(root, text="Stop Clicking", command=self.stop_clicking, state=tk.DISABLED,
+                                     bg="#ff1493", fg="white", font=("Arial", 12, "bold"))
         self.stop_button.pack(pady=5)
 
         # Listen for F6 hotkey to toggle clicking
